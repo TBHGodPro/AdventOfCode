@@ -1,20 +1,20 @@
-const fs = require('fs');
+const fs = require("fs");
 
-const data = fs.readFileSync(__dirname + '/data.txt', 'utf8');
-const list = data.split('\n').map(item => item.split(" "));
+const data = fs.readFileSync(__dirname + "/data.txt", "utf8");
+const list = data.split("\n").map(item => item.split(" "));
 
 // Part 1
 
 const beats = {
 	X: "C",
 	Y: "A",
-	Z: "B"
-}
+	Z: "B",
+};
 const loses = {
 	X: "B",
 	Y: "C",
-	Z: "A"
-}
+	Z: "A",
+};
 
 let score = 0;
 for (const [op, me] of list) {
@@ -27,38 +27,38 @@ for (const [op, me] of list) {
 	else if (me == "Z") score += 3;
 }
 
-console.log(`Part 1 = ${score}`)
+console.log(`Part 1 = ${score}`);
 
 // Part 2
 
 const draw = {
-	"A": "X",
-	"B": "Y",
-	"C": "Z"
-}
+	A: "X",
+	B: "Y",
+	C: "Z",
+};
 const win = {
-	"A": "Y",
-	"B": "Z",
-	"C": "X"
-}
+	A: "Y",
+	B: "Z",
+	C: "X",
+};
 const lose = {
-	"A": "Z",
-	"B": "X",
-	"C": "Y"
-}
+	A: "Z",
+	B: "X",
+	C: "Y",
+};
 
 const scores = {
-	"X": 1,
-	"Y": 2,
-	"Z": 3
-}
+	X: 1,
+	Y: 2,
+	Z: 3,
+};
 
 score = 0;
 for (const [op, result] of list) {
 	switch (result) {
 		case "X": // Lose
 			// Lose so no score change
-			score += scores[lose[op]]
+			score += scores[lose[op]];
 			break;
 		case "Y": // Draw
 			score += 3;
@@ -66,9 +66,9 @@ for (const [op, result] of list) {
 			break;
 		case "Z": // Win
 			score += 6;
-			score += scores[win[op]]
+			score += scores[win[op]];
 			break;
 	}
 }
 
-console.log(`Part 2 = ${score}`)
+console.log(`Part 2 = ${score}`);

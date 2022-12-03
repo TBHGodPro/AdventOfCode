@@ -1,8 +1,8 @@
-const fs = require('fs');
+const fs = require("fs");
 
-const data = fs.readFileSync(__dirname + '/data.txt', 'utf-8');
-const splitByLine = data.split('\n');
-const list = splitByLine.map(item => item.split(" "))
+const data = fs.readFileSync(__dirname + "/data.txt", "utf-8");
+const splitByLine = data.split("\n");
+const list = splitByLine.map(item => item.split(" "));
 
 let horizontal = 0;
 let depth = 0;
@@ -23,8 +23,7 @@ for (const [type, amount] of list) {
 
 let final = horizontal * depth;
 
-console.log(`Part 1 = ${final} (Horizontal ${horizontal} & Depth ${depth})`)
-
+console.log(`Part 1 = ${final} (Horizontal ${horizontal} & Depth ${depth})`);
 
 let aim = 0;
 horizontal = 0;
@@ -47,4 +46,4 @@ for (const [type, amount] of list) {
 
 final = horizontal * depth;
 
-console.log(`Part 2 = ${final} (Horizontal ${horizontal} & Depth ${depth} & Aim ${aim})`)
+console.log(`Part 2 = ${final} (Horizontal ${horizontal} & Depth ${depth} & Aim ${aim})`);
