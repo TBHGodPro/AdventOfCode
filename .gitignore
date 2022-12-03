@@ -2,4 +2,4 @@
 replit.nix
 node_modules/
 package.json
-package-lock
+package-lock.json
