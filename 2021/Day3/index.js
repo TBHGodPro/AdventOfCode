@@ -39,7 +39,7 @@ for (const char of gamma) {
 gamma = gamma.join("");
 epsilon = epsilon.join("");
 
-console.log(`Part 1 = ${parseInt(gamma, 2) * parseInt(epsilon, 2)} (Gamma = ${parseInt(gamma, 2)} & Epsilon = ${parseInt(epsilon, 2)}`);
+console.log(`Part 1 = ${parseInt(gamma, 2) * parseInt(epsilon, 2)} (Gamma = ${parseInt(gamma, 2)} & Epsilon = ${parseInt(epsilon, 2)})`);
 
 // Part 2
 
