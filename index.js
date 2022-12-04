@@ -22,8 +22,9 @@ console.log("\n-------------------------------------\nWelcome to my AdventOfCode
 	if (!days.includes(`Day${day}`)) return console.error("That isn't a valid day!");
 
 	console.log(`\nRunning Day ${day} of ${year}...\n\n`);
+	const started = Date.now();
 
 	require(`./${year}/Day${day}`);
 
-	console.log("\n\nSuccess!");
+	console.log(`\n\nSuccess in ${Date.now() - started}ms!`);
 })().then(() => rl.close());
