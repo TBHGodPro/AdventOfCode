@@ -1,7 +1,6 @@
 const readline = require("node:readline");
 const { readdir } = require("fs/promises");
 const { join } = require("path");
-const { stat } = require("node:fs");
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
@@ -13,7 +12,7 @@ console.log("\n-------------------------------------\nWelcome to my AdventOfCode
 	const year = await ask("What year would you like to use? (leave empty for current) ").catch(() => new Date().getFullYear().toString());
 
 	const days = await readdir(join(__dirname, year)).catch(() => null);
-	if (!days) return console.error("That isn't a valid year!");
+	if (!days) return console.error(year.startsWith("20") && year.length == 4 ? "Oops, I didn't do AOC in that year!" : "That isn't a valid year!");
 
 	console.log(`\nHere are the available days for ${year}:\n${days.map(day => day[3]).join("\n")}`);
 
@@ -27,4 +26,4 @@ console.log("\n-------------------------------------\nWelcome to my AdventOfCode
 	require(`./${year}/Day${day}`);
 
 	console.log(`\n\nSuccess in ${Date.now() - started}ms!`);
-})().then(() => rl.close());
+})().finally(() => rl.close());

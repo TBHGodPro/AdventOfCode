@@ -20,19 +20,13 @@ for (const item of graphData) {
 // Part 1
 
 const p1 = [...graph].map(item => [...item]);
-for (const [amount, original, final] of actions) {
-	for (let i = 0; i < amount; i++) {
-		p1[final - 1].splice(0, 0, p1[original - 1].shift());
-	}
-}
+for (const [amount, original, final] of actions) p1[final - 1].splice(0, 0, ...p1[original - 1].splice(0, amount).reverse());
 
 console.log(`Part 1 = ${p1.map(item => item[0]).join("")}`);
 
 // Part 2
 
 const p2 = [...graph].map(item => [...item]);
-for (const [amount, original, final] of actions) {
-	p2[final - 1].splice(0, 0, ...p2[original - 1].splice(0, amount));
-}
+for (const [amount, original, final] of actions) p2[final - 1].splice(0, 0, ...p2[original - 1].splice(0, amount));
 
 console.log(`Part 2 = ${p2.map(item => item[0]).join("")}`);
