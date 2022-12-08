@@ -2,24 +2,16 @@ const fs = require("fs");
 
 const data = fs.readFileSync(__dirname + "/data.txt", "utf8");
 
-// Part 1
-
-let current = [];
-for (const char of data) {
-	if (current.length == 4) current.shift();
-	current.push(char);
-	if (current.length == 4) if (current.every(char => !(current.filter(item => item == char).length > 1))) break;
+function solve(amount) {
+	let current = [];
+	for (const char of data) {
+		if (current.length == amount) current.shift();
+		current.push(char);
+		if (current.length == amount) if (current.every(char => !(current.filter(item => item == char).length > 1))) break;
+	}
+	return data.indexOf(current.join("")) + amount;
 }
 
-console.log(`Part 1 = ${data.indexOf(current.join("")) + 4}`);
+console.log(`Part 1 = ${solve(4)}`);
 
-// Part 2
-
-current = [];
-for (const char of data) {
-	if (current.length == 14) current.shift();
-	current.push(char);
-	if (current.length == 14) if (current.every(char => !(current.filter(item => item == char).length > 1))) break;
-}
-
-console.log(`Part 2 = ${data.indexOf(current.join("")) + 14}`);
+console.log(`Part 2 = ${solve(14)}`);
